@@ -1,0 +1,30 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>CATÁLOGO (ADMIN)</title>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-end p-0 m-0">
+    <div class="col-2 text-end p-0">
+        <a href="{% url 'createProducto' %}" class="btn btn-nuevo position-relative"><i class="bi bi-plus fs-4 position-absolute top-50 start-50 translate-middle"></i><h4 class="position-absolute top-50 start-50 translate-middle">Nuevo</h4></a>
+    </div>
+</div>
+<div class="row">
+    <h1 class="text-center display-1 text-white">Catálogo (ADMIN)</h1>
+</div>
+    <div class="row justify-content-center pt-5">
+            {% for producto in object_list %}
+            <div class="col-12 col-md-6 col-lg-4 p-3">
+                <div class="p-3 shadow rounded listadoProducto">
+                    <h2 class="h4">{{ producto.nombre }}</h2>
+                    <a class="btn btn-outline-secondary" href="{% url 'detailProducto' pk=producto.pk %}">Ver</a>
+                    <a class="btn btn-outline-secondary mx-1" href="{% url 'updateProducto' pk=producto.pk %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'deleteProducto' pk=producto.pk %}"><i class="bi bi-trash3"></i></a>
+                </div>
+            </div>
+            {% empty %}
+                Aún no hay productos.
+            {% endfor %}
+    </div>
+{% endblock %}

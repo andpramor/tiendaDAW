@@ -1,0 +1,55 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>CATÁLOGO</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="text-center display-1 text-white">Catálogo</h1>
+    </div>
+    <div class="row filtro justify-content-center">
+        <div class="col-12 col-md-4 text-center text-md-end py-3">
+            <form method="GET">
+                <select name="marca" class="form-select mb-3">
+                    <option value="">Todas las marcas</option>
+                    {% for marca in marcas %}
+                    <option value="{{ marca }}" {% if marca == marca_seleccionada %} selected {% endif %}>
+                        {{ marca }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <select name="modelo" class="form-select mb-3">
+                    <option value="">Todos los modelos</option>
+                    {% for modelo in modelos %}
+                    <option value="{{ modelo }}" {% if modelo == modelo_seleccionado %} selected {% endif %}>
+                        {{ modelo }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Filtrar" class="btn btn-primary boton">
+            </form>
+        </div>
+        <div class="col-12 col-md-4 text-center text-md-end py-3">
+            <form method="GET">
+                <input type="text" name="busqueda" placeholder="Búsqueda" class="form-control mb-3" {% if busqueda %} value="{{ busqueda }}" {% endif %}>
+                <input type="submit" value="Buscar" class="btn btn-primary boton">
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-5">
+        {% for producto in object_list %}
+            <div class="col-12 col-md-6 col-lg-4 p-3">
+                <div class="p-3 shadow rounded listadoProducto">
+                    <div class="pb-3">
+                        <h2 class="h4 d-inline">{{ producto.nombre }}</h2>
+                        <div class="d-inline">{{ producto.precio }}€</div>
+                    </div>
+                    <a class="btn btn-outline-secondary" class="mt-3" href="{% url 'comprar' pk=producto.pk %}">Comprar</a>
+                </div>
+            </div>
+        {% empty %}
+            Aún no hay productos.
+        {% endfor %}
+    </div>
+{% endblock %}

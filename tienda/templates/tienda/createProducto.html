@@ -1,0 +1,13 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Nuevo Producto</title>
+{% endblock %}
+
+{% block content %}
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar producto</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,106 @@
+/*Iconos de bootstrap*/
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
+.iconoHome {
+    transition: transform 1.2s ease;
+}
+
+.iconoHome:hover {
+    transform: rotate(360deg);
+}
+
+.fondo {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    position: fixed;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #31706D;
+}
+
+.contenedorBola {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #65E6DF;
+    border-radius: 50%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    animation: giros 2s infinite linear;
+}
+
+.bola {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #65E6DF;
+}
+
+@keyframes giros {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+a.btn-outline-secondary:hover {
+    background-color: #20b3ab;
+}
+
+.listadoProducto {
+    background-color: lightseagreen;
+    color: white;
+    transition: all 0.3s linear;
+    .btn-outline-secondary {
+        color: white;
+        border-color: white;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #31706D;
+    }
+}
+
+.row:has(.listadoProducto:hover) .listadoProducto:not(:hover) {
+    opacity: 0.8;
+    box-shadow: none !important;
+}
+
+.btn-nuevo {
+    width: 3rem;
+    height: 3rem;
+    background-color: lightseagreen;
+    color: white;
+    transition: width 0.3s ease;
+    h4 {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s linear;
+    }
+}
+
+.btn-nuevo:hover {
+    height: 3rem;
+    width: 10rem;
+    background-color: lightseagreen !important;
+    color: white !important;
+    i {
+        opacity: 0;
+        visibility: hidden;
+    }
+    h4 {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.boton {
+    background-color: #20b3ab;
+    border-color: white;
+}
+
+.boton:hover {
+    background-color:#31706D;
+    border-color: white;
+}

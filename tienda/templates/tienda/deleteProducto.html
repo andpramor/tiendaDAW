@@ -1,0 +1,14 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Borrar producto</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h2>¿Borrar el producto "{{ producto.nombre }}"?</h2>
+        {{ form }}
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock %}

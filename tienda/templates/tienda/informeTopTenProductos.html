@@ -1,0 +1,48 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Informe top productos</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="text-center display-1 text-white mb-5">Informes: Top Ten Productos</h1>
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-12">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Uds. vendidas</th>
+                        <th>Importe total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in object_list %}
+                        <tr>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.precio }}€</td>
+                            <td>{{ producto.marca }}</td>
+                            <td>{{ producto.modelo }}</td>
+                            <td>{{ producto.sum_ventas }}</td>
+                            <td>{{ producto.sum_importe|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>Aún no hay productos.</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

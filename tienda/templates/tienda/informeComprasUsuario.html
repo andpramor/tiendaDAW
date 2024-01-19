@@ -1,0 +1,60 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Informe Compras de Usuario</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="text-center display-1 text-white mb-5">Informes: Compras por usuario</h1>
+    </div>
+    <div class="row filtro justify-content-center">
+        <div class="col-12 col-md-5 text-center">
+            <form method="GET">
+                <select name="cliente" class="form-select">
+                    <option value="">Todos los clientes</option>
+                    {% for cliente in clientes %}
+                    <option value="{{ cliente }}" {% if cliente == cliente_seleccionado %} selected {% endif %}>
+                        {{ cliente }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Filtrar" class="btn btn-primary boton mt-3">
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-12">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Producto</th>
+                        <th>Unidades</th>
+                        <th>Importe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for compra in object_list %}
+                        <tr>
+                            <td>{{ compra.fecha }}</td>
+                            <td>{{ compra.usuario }}</td>
+                            <td>{{ compra.producto }}</td>
+                            <td>{{ compra.unidades }}</td>
+                            <td>{{ compra.importe }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>Aún no hay compras.</td>
+                            <td>{{ cliente_seleccionado }}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

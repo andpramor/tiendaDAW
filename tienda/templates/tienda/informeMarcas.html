@@ -1,0 +1,57 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Informe por Marca</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="text-center display-1 text-white mb-5">Informes: Marcas</h1>
+    </div>
+    <div class="row filtro justify-content-center">
+        <div class="col-12 col-md-5 text-center">
+            <form method="GET">
+                <select name="marca" class="form-select">
+                    <option value="">Todas las marcas</option>
+                    {% for marca in marcas %}
+                    <option value="{{ marca }}" {% if marca == marca_seleccionada %} selected {% endif %}>
+                        {{ marca }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Filtrar" class="btn btn-primary boton mt-3">
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-12">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in object_list %}
+                        <tr>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.precio }}€</td>
+                            <td>{{ producto.marca }}</td>
+                            <td>{{ producto.modelo }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>Aún no hay productos.</td>
+                            <td>-</td>
+                            <td>{{ marca_seleccionada }}</td>
+                            <td>-</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

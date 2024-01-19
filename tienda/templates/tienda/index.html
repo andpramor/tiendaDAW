@@ -1,0 +1,20 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+	<title>Bienvenidos</title>
+{% endblock %}
+
+{% block content %}
+	<h2 class="text-white mt-5 pt-5">Tienda</h2>
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-2 text-center">
+			<a href="{% url 'listado' %}" class="btn btn-outline-secondary border-white text-white my-2">Catálogo (ADMIN)</a>
+		</div>
+		<div class="col-12 col-md-2 text-center">
+			<a href="#" class="btn btn-outline-secondary border-white text-white my-2">Informes (ADMIN)</a>
+		</div>
+		<div class="col-12 col-md-2 text-center">
+			<a href="{% url 'tienda' %}" class="btn btn-outline-secondary border-white text-white my-2">Tienda</a>
+		</div>
+	</div>
+{% endblock %}

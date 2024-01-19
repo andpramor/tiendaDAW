@@ -1,0 +1,42 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}
+    <title>Informe top clientes</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="text-center display-1 text-white mb-5">Informes: Top Ten Clientes</h1>
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-12 col-lg-8">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Nombre</th>
+                        <th>Saldo</th>
+                        <th>Importe gastado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in object_list %}
+                        <tr>
+                            <td>{{ cliente.username }}</td>
+                            <td>{{ cliente.saldo }}€</td>
+                            <td>{{ cliente.sum_importe|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td>Aún no hay clientes.</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
